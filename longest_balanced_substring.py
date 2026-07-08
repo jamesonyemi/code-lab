@@ -11,8 +11,9 @@ Return the length of the longest balanced substring of s.
 Example 1:
 
 Input: s = "abccba"
-Output: 3
-Explanation: The substring "abc" is the longest balanced substring.
+Output: 6
+Explanation: The entire string "abccba" is balanced because each distinct character appears the same number of times.
+
 Example 2:
 
 Input: s = "cbbd"
