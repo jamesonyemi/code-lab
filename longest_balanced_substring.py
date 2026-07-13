@@ -13,12 +13,15 @@ Example 1:
 Input: s = "abccba"
 Output: 6
 Explanation: The entire string "abccba" is balanced because each distinct character appears the same number of times.
+"abccba" has 2 'a's, 2 'b's, and 2 'c's. The length of the longest balanced substring is 6. 
+
 
 Example 2:
 
 Input: s = "cbbd"
 Output: 2
 Explanation: The substring "bb" is the longest balanced substring.
+"bb" has 2 'b's, and 1 'd'. The length of the longest balanced substring is 2.
 
 """
 
@@ -27,20 +30,18 @@ from collections import defaultdict
 
 class Solution:
     def longestBalanced(self, s: str) -> int:
-        # left = 0
         longest = 0
-
         for left in range(len(s)):
             max_freq = 0
             counter: dict[str, int] = defaultdict(int)
 
-            for r in range(left, len(s)):
-                char = s[r]
+            for right in range(left, len(s)):
+                char = s[right]
                 counter[char] = counter.get(char, 0) + 1
 
                 if counter[char] > max_freq:
                     max_freq = counter[char]
-                window_len = r - left + 1
+                window_len = right - left + 1
 
                 # Math trick: If max_freq * number of unique characters
                 # equals the window length, then EVERY character must

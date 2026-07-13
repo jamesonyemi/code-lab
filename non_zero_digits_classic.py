@@ -41,8 +41,8 @@ Constraints:
 
 class Solution:
     def sumAndMultiply(self, n: int) -> int:
-        digits = [ d for d in str(n) if d != '0' ]
-        sum_digits = sum(int(d) for d in digits)
-        x = ''.join(digits)
+        digits = [ d for d in str(n) if d != '0' ] # remove all zeroes from the string representation of n
+        sum_digits = sum(int(d) for d in digits)   # calculate the sum of the non-zero digits
+        x = ''.join(digits)                        # join the non-zero digits into a string
         
-        return int(x) * sum_digits if x else 0
+        return int(x) * sum_digits if x else 0     # if x is empty, return 0

@@ -10,8 +10,8 @@ Question.
  """
 
 class Node:
-    def __init__(self, val, next=None):
-        self.data = val
+    def __init__(self, data, next=None):
+        self.data = data
         self.next = next
     
 def middle_of_linked_list(head: Node) -> int:

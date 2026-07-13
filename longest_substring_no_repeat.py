@@ -1,5 +1,6 @@
 """
 Longest Substring Without Repeating Characters
+
 Given a string s, find the length of the longest substring without repeating characters.
 
 input: s = "abcabcbb"
@@ -17,7 +18,7 @@ Explanation: The answer is "b", with the length of 1.
 
 from collections import defaultdict
 
-def longest_substring_without_repeating_character(s: str) -> int:
+def longest_substring_with_no_repeating_character(s: str) -> int:
     left = 0
     longest = 0
     counter: dict[str, int] = defaultdict(int)
