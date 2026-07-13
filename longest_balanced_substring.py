@@ -21,8 +21,7 @@ Example 2:
 Input: s = "cbbd"
 Output: 2
 Explanation: The substring "bb" is the longest balanced substring.
-"bb" has 2 'b's, and 1 'd'. The length of the longest balanced substring is 2.
-
+"bb" has 2 'b's. The length of the longest balanced substring is 2.
 """
 
 from collections import defaultdict
