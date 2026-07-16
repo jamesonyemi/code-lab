@@ -36,7 +36,7 @@ class Solution:
 
             for right in range(left, len(s)):
                 char = s[right]
-                counter[char] = counter.get(char, 0) + 1
+                counter[char] += 1
 
                 if counter[char] > max_freq:
                     max_freq = counter[char]
