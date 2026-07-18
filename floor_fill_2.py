@@ -3,7 +3,6 @@ from typing import List
 
 DIRECTIONS = ((-1, 0), (0, 1), (1, 0), (0, -1))
 
-
 def flood_fill(r: int, c: int, replacement: int, image: List[List[int]]) -> List[List[int]]:
     if not image or not image[0]:
         return image
@@ -34,4 +33,3 @@ def flood_fill(r: int, c: int, replacement: int, image: List[List[int]]) -> List
 if __name__ == "__main__":
     sample = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
     print(flood_fill(1, 1, 2, sample))
-

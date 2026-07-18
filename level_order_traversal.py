@@ -8,7 +8,7 @@ class Node:
         self.right = right
 
 
-def level_order_traversal(root):
+def level_order_traversal(root: Node):
     if root is None:
         return []
 
