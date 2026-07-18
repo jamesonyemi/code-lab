@@ -12,13 +12,29 @@ Used this pattern when you're:
 
 from collections import deque
 
-def tree_bfs(root):
+
+def FOUND(node):
+	"""Return a documented success payload for a matching node."""
+	return ("FOUND", node)
+
+
+NOT_FOUND = ("NOT_FOUND", None)
+
+
+def tree_bfs(root, is_goal=None):
+	"""Traverse the tree breadth-first and return FOUND(node) for the first matching node."""
+	if is_goal is None:
+		is_goal = lambda node: False
+
+	if is_goal(root):
+		return FOUND(root)
+
 	queue = deque([root])
 	while len(queue) > 0:
 		node = queue.popleft()
 		for child in node.children:
-			if is_goal(child): # pseudocode for your goal check, you can implement it in any programming language of your choice
+			if is_goal(child):
 				return FOUND(child)
-		queue.append(child)	
-	
-	return NOT_FOUND # They are Pseudocode to help you understand the pattern. You can implement it in any programming language of your choice
+			queue.append(child)
+
+	return NOT_FOUND

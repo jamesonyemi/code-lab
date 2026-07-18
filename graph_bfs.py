@@ -8,12 +8,14 @@ Used this pattern when:
  4. Exploring possible states
 """
 
-def graph_bfs(root):
+from collections import deque
+
+def graph_bfs(root, get_neighbors):
 	queue   = deque([root])
 	visited = set([root])
 	while len(queue) > 0:
 		node = queue.popleft()
-		for neighbor in get_neighbor(node):
+		for neighbor in get_neighbors(node):
 			if neighbor in visited:
 				continue
 			queue.append(neighbor)
