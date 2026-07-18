@@ -17,9 +17,8 @@ def tree_bfs(root):
 	while len(queue) > 0:
 		node = queue.popleft()
 		for child in node.children:
-			if is_goal(child):
+			if is_goal(child): # pseudocode for your goal check, you can implement it in any programming language of your choice
 				return FOUND(child)
 		queue.append(child)	
 	
-	return NOT_FOUND	
-
+	return NOT_FOUND # They are Pseudocode to help you understand the pattern. You can implement it in any programming language of your choice
