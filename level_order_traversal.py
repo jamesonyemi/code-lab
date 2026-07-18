@@ -1,4 +1,5 @@
 from collections import deque
+from typing import Optional
 
 
 class Node:
@@ -8,7 +9,7 @@ class Node:
         self.right = right
 
 
-def level_order_traversal(root: Node):
+def level_order_traversal(root: Optional[Node]):    
     if root is None:
         return []
 
