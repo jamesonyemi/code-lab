@@ -36,6 +36,17 @@ Constraints:
 
 0 <= n <= 109
 
+Time Complexity: O(n), where n is the number of digits in n.        
+Space Complexity: O(n), where n is the number of digits in n.
+
+why?
+The time complexity is O(n) because we need to iterate through 
+each digit of the integer n to extract the non-zero digits and calculate their sum. 
+The space complexity is also O(n) because we are storing the non-zero digits 
+in a list or string, 
+which can potentially hold all the digits of n if none of them 
+are zero.
+
 """
 
 
