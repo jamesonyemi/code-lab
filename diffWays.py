@@ -45,6 +45,11 @@ that appear more than once in the recursion tree?
 Level: Medium
 """
 
+"""
+Time Complexity: O(2^n)
+Space Complexity: O(2^n)
+"""
+
 
 from typing import List
 
@@ -64,13 +69,13 @@ class Solution:
                 op = expression[i]
                 if op in "+-*":
                     isNumber = False
+                    
                     """
                     Divide: Solve left and right segments with index
-                    range
+                    in the range
                     """
-
                     left = solve(start, i - 1)
-                    right = solve(i+1, end)
+                    right = solve(i + 1, end)
 
                     """
                     Conquer: Combine both result found
@@ -87,7 +92,7 @@ class Solution:
             if isNumber:
                 num = 0
                 for i in range(start, end + 1):
-                    num = num * 10 + int((expression[i]))
+                    num = (num * 10) + int((expression[i]))
                 result.append(num)     
 
             memo[(start, end)] = result
