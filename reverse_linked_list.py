@@ -63,11 +63,28 @@ class ListNode:
     def __eq__(self, other):
         if other is None:
             return False
-        if isinstance(other, ListNode):
-            return self.val == other.val and self.next == other.next
+
         if isinstance(other, list):
-            return self._to_list() == other
-        return NotImplemented
+            left = self
+            index = 0
+            while left is not None and index < len(other):
+                if left.val != other[index]:
+                    return False
+                left = left.next
+                index += 1
+            return left is None and index == len(other)
+
+        if not isinstance(other, ListNode):
+            return NotImplemented
+
+        left = self
+        right = other
+        while left is not None and right is not None:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+        return left is None and right is None
 
     def __ne__(self, other):
         result = self.__eq__(other)
