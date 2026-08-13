@@ -41,20 +41,15 @@ from typing import Any, Dict, List, Optional
 
 class Solution:
     def clean_release_chain(self, release_chain: Optional["ListNode"]) -> Optional["ListNode"]:
-        # implement
-        if not release_chain:
+        if release_chain is None:
             return None
-            
-        cur = release_chain
-        seen = {cur.val}        
-        
 
-        while cur.next is not None:
-            if cur.next.val in seen:
-                cur.next = cur.next.next
-            else: 
-                seen.add(cur.next.val)    
-                cur = cur.next 
+        current = release_chain
+        while current.next is not None:
+            if current.next.val == current.val:
+                current.next = current.next.next
+            else:
+                current = current.next
 
-        return release_chain        
+        return release_chain
     

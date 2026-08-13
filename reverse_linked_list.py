@@ -52,15 +52,45 @@ class ListNode:
     def __str__(self):
         return f"ListNode({self.val}, {self.next})"
 
+    def _to_list(self):
+        values = []
+        current = self
+        while current is not None:
+            values.append(current.val)
+            current = current.next
+        return values
+
     def __eq__(self, other):
-        return self.val == other.val
+        if other is None:
+            return False
+        if isinstance(other, ListNode):
+            return self.val == other.val and self.next == other.next
+        if isinstance(other, list):
+            return self._to_list() == other
+        return NotImplemented
 
     def __ne__(self, other):
-        return self.val != other.val
-    
+        result = self.__eq__(other)
+        if result is NotImplemented:
+            return NotImplemented
+        return not result
+
+
+def list_to_linked_list(values):
+    head = None
+    tail = None
+    for value in values:
+        node = ListNode(value)
+        if head is None:
+            head = node
+            tail = node
+        else:
+            tail.next = node
+            tail = node
+    return head
+
 
 def rebuild_return_route(rebuild_return_route: Optional[ListNode]) -> Optional[ListNode]:
-    # implement
     prev = None
     cur = rebuild_return_route
     while cur is not None:
@@ -70,25 +100,25 @@ def rebuild_return_route(rebuild_return_route: Optional[ListNode]) -> Optional[L
         cur = next_node
     return prev
 
-
-
-
 test_cases = [
     # Test case 1: Normal case with multiple stops
     ([14, 27, 33, 48], [48, 33, 27, 14]),
     # Test case 2: Single stop
     ([9, 21], [21, 9]),
     # Test case 3: Empty route
-    ([], None),
+    ([], []),
     # Test case 4: Single delivery stop
     ([5], [5]),
     # Test case 5: Repeated stop values (should not matter)
     ([3, 8, 8, 12], [12, 8, 8, 3]),
 ]
 
-for rebuild_return_route, expected_output in test_cases:
-    result = rebuild_return_route(rebuild_return_route)
-    assert result == expected_output
+for input_values, expected_output in test_cases:
+    result = rebuild_return_route(None if not input_values else list_to_linked_list(input_values))
+    if input_values:
+        assert result == expected_output
+    else:
+        assert result is None
 
 print("All test cases passed!")
 
