@@ -14,7 +14,7 @@ Input
 [[], [1], [2], [3], [], [], []]
 
 Output
-[null, null, null, null, 1, null, 3]
+[null, null, null, null, 1, null, 2]
 
 Explanation
 InventoryFloor inventoryFloor = new InventoryFloor();
@@ -22,7 +22,7 @@ inventoryFloor.store(1); // The stack is now [1]
 inventoryFloor.store(2); // The stack is now [1, 2]
 inventoryFloor.store(3); // The stack is now [1, 2, 3]
 inventoryFloor.lowestStored(); // return 1, the minimum value in the stack
-removeLatest() from the stack [1, 2, 3]; we pop 3 from the stack. The stack is now [1, 2]
+inventoryFloor.removeLatest(); // Remove the latest element from the stack [1, 2, 3]; we pop 3 from the stack. The stack is now [1, 2]
 inventoryFloor.removeLatest(); // The stack is now [1, 2]
 inventoryFloor.latest(); // return 2
 
@@ -44,6 +44,9 @@ from typing import Any, Dict, List, Optional
 
 class Solution:
     def inventory_floor(self, commands: List[str], arguments: List[Any]) -> List[Any]:
+        if len(commands) != len(arguments):
+            raise ValueError("Commands and arguments must have the same length.")
+        
         target = None
         result = []
         for command, call_arguments in zip(commands, arguments):
