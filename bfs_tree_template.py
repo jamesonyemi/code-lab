@@ -33,8 +33,7 @@ def tree_bfs(root, is_goal=None):
 	while len(queue) > 0:
 		node = queue.popleft()
 		for child in node.children:
-	if is_goal(child):
+			if is_goal(child):
 				return FOUND(child)
 			queue.append(child)
-
 	return NOT_FOUND
